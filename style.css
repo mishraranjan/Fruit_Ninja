@@ -1,0 +1,152 @@
+html{
+    height: 100%;
+    font-family: cursive;
+    background: -moz-radial-gradient(circle,#fff,#ccc);
+    background: -webkit-radial-gradient(circle,#fff,#ccc);}
+
+#container{
+    height: 600px;
+    width: 750px;
+    background-color: #9DD2EA;
+    margin: 10px auto;
+    padding: 20px; 
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 4px #009de4;
+    box-shadow: 0px 4px #009de4;
+    position: relative;
+}
+
+#score{
+
+    background-color: #F1FF92;
+    color: #888E5F ;
+    padding: 11px;
+    position: absolute;
+    left:690px;
+    -webkit-box-shadow: 0px 2px #bae400;
+    box-shadow: 0px 2px #bae400;
+    border-radius: 5px;
+}
+
+#correct{
+    position: absolute;
+    left: 259px;
+    background-color:rgb(0, 255, 34);
+    padding: 10px;
+    color: whitesmoke;
+    display: none;
+}
+
+#wrong{
+    position: absolute; 
+    left:259px;
+    background-color: red;
+    padding: 10px;
+    color: whitesmoke;
+    display: none;
+}
+
+#fruitscontainer{
+    width: 650px;
+    height: 400px;
+    background-color: white;
+    margin: 55px auto 10px auto ;
+    box-shadow: 0px 3px #c363b0;
+    -webkit-box-shadow: 0px 3px #c363b0;
+    font-size: 100px;
+    text-align: center;
+    font-family: cursive;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+#instruction{
+    width: 450px;
+    height:50px;
+    text-align: center;
+    font-family: cursive;
+    background-color:#c363b0d0 ;
+    margin: 10px auto;
+    line-height: 48px ;
+    box-shadow:0px 3px #99077c;
+    -webkit-box-shadow:0px 3px #99077c;
+}
+
+
+
+
+
+
+#box1{
+    margin-left: 0px;
+}
+.box:hover, #startreset:hover{
+    background-color: #e1a3f2;
+    color: white;
+    -webkit-box-shadow: 0px 3px #c363b0;
+    box-shadow: 0px 3px #c363b0;
+}
+ .box:active, #startreset:active{
+    background-color: #ab10f3;
+    top: 4px;
+ }
+
+#startreset{
+    width: 90px;
+    background-color: #33b2ed;
+    margin :50px auto ;
+    position: relative;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0px 3px #0d8fcc;
+    -webkit-box-shadow: 0px 3px #0d8fcc;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#livesleft{
+    width: 100px;
+    height: 20px;
+    padding: 10px;
+    position: absolute;
+    background-color: rgb(232, 249, 75);
+    border-radius: 3px;
+    box-shadow: 0px 3px #b3cc0fd6;
+    -webkit-box-shadow: 0px 3px #b3cc0fd6;
+    cursor: pointer;
+    display: none;
+}
+
+#gameover{
+    height: 200px;
+    width: 500px;
+    background: linear-gradient(rgb(117, 111, 231),rgb(26, 203, 64));
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: rgb(220, 214, 214);
+    text-transform: uppercase;
+    position: absolute;
+    top: 170px;
+    left: 145px;
+    z-index: 2;
+    display: none;
+}
+
+.life{
+    width: 30px;
+    height: 30px;
+    margin: 0.5px;
+    align-content: center;
+   
+    
+}
+
+.fruit{
+    display: none;
+    position: absolute;
+}
+
+

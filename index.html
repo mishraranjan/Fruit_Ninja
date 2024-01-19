@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fruits Game</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="livesleft">
+
+        </div>
+        <div id="score">
+            Score: <span id="scorevalue">0</span>
+        </div>
+        <div id="correct">Correct</div>
+        <div id="wrong">Try Again</div>
+        <div id="fruitscontainer">
+            <img id="fruit1" class="fruit">
+        </div>
+        <div id="instruction">Slice the fruits</div>
+        <div id="startreset">
+            Start Game
+        </div>
+        <div id="gameover">
+
+        </div>
+    </div>
+    <audio id="knifesound">
+        <source src="audio/knife.ogg">
+        <source src="audio/knife.mp3">
+    </audio>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<script>
+    var playing = false;
+    var score = 0;
+    var livesleft;
+    var fruits = ['cherry', 'grapes', 'greenapple', 'lemon', 'mango', 'strawberry', 'tomato', 'watermelon','apple'];
+    var step;
+    var action;
+    $(function () {
+        $("#startreset").click(function () {
+            if (playing == true) {
+                location.reload();
+            } else {
+                playing = true;
+                score = 0;
+                $("#scorevalue").html(score);
+                $("#livesleft").show();
+                livesleft = 3;
+                addHearts();
+                $("#gameover").hide();
+                $("#startreset").html("Reset Game");
+                startAction();
+            }
+        });
+
+        $("#fruit1").mouseover(function () {
+            $("#knifesound")[0].play();
+            score++;
+            $("#scorevalue").html(score);
+            clearInterval(action);
+            $("#fruit1").hide();
+            // $("#fruit1").hide("fadeIn", 100);
+             setTimeout(startAction,500);
+
+        });
+
+        // functions
+        function addHearts() {
+            $("#livesleft").empty();
+            for (i = 0; i < livesleft; i++) {
+                $("#livesleft").append('<img src = "images/heart.png" class="life">');
+            }
+        }
+        function startAction() {
+            // generate a random fruit
+            $("#fruit1").show();
+            chooseFruit();
+            $("#fruit1").css({ 'left': Math.round(550 * Math.random()), 'top': -50 });
+
+            //   generate a random step
+            step = 1 + Math.round(5 * Math.random());
+
+            // move fruit down
+            action = setInterval(() => {
+                $("#fruit1").css('top', $("#fruit1").position().top + step);
+
+                // check if fruit is low\
+                if ($("#fruit1").position().top >
+                    $("#fruitscontainer").height()) {
+
+                    // check if lives left
+                    if (livesleft > 1) {
+                        // generate a random fruit
+                        $("#fruit1").show();
+                        chooseFruit();
+                        $("#fruit1").css({ 'left': Math.round(550 * Math.random()), 'top': -50 });
+
+                        //   generate a random step
+                        step = 1 + Math.round(5 * Math.random());
+
+                        // reduce lives by one.
+                        livesleft--;
+
+                        addHearts();
+                    } else {
+
+                        playing = false;
+                        $("#startreset").html("Start Game");
+                        $("#gameover").show();
+                        $("#gameover").html('<p>Game Over! </p><p>Your score is ' + score + '</p>');
+                        $("#livesleft").hide();
+                        stopAction();
+                        // $("#livesleft").hide();
+                    }
+                }
+
+            }, 10);
+
+
+        }
+
+        function chooseFruit() {
+            $("#fruit1").attr('src', 'images/' + fruits[Math.round(8 * Math.random())] + '.png');
+        }
+
+        function stopAction() {
+            clearInterval(action);
+            $("#fruit1").hide();
+        }
+    });
+</script>
+
+</html>
